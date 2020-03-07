@@ -1,0 +1,27 @@
+{
+  "name": "weconnect",
+  "version": "5.5.5",
+  "description": "An AI-backed emergency hotline that works on web created @ HackTech 2020",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artem-tkachuk/weConnect.git"
+  },
+  "keywords": [
+    "AI",
+    "emergency"
+  ],
+  "author": "Artem Tkachuk, Sakshi Munjal, Jason Chan, Can Koz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/artem-tkachuk/weConnect/issues"
+  },
+  "homepage": "https://github.com/artem-tkachuk/weConnect#readme",
+  "dependencies": {
+    "typescript": "^3.8.3"
+  }
+}
