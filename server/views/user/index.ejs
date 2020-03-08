@@ -35,53 +35,64 @@
         <h3>
           We are one voice away!
         </h3>
-        <a href="#"><i class="fas fa-microphone fa-2x pulse-ring"></i></a>
+        <button id = "record" class="fas fa-microphone fa-2x pulse-ring"></button>
+        <button id="stop">Stop</button>
       </div>
 
-
-
-
-      <button id="stop">Stop</button>
-      <button id="download">Download</button>
-
       <script>
-        let recordedChunks = [];
 
-        let options = {mimeType: 'audio/webm'};
-        mediaRecorder = new MediaRecorder(stream, options);
-        mediaRecorder.ondataavailable = handleDataAvailable;
-        mediaRecorder.start();
 
-        function handleDataAvailable(event) {
-          if (event.data.size > 0) {
-            recordedChunks.push(event.data);
-          } else {
-            // ...
+        function showLocation(pos) {
+          console.log(pos);
+
+          let record = document.getElementById('record');
+          let stopRecord = document.getElementById('stop');
+
+          record.onclick = (e) => {
+            console.log(`I was clicked!`);
+            record.disabled = true;
+            stopRecord.disabled = false;
+            audioChunks = [];
+            rec.start();
+          }
+
+          stopRecord.onclick = (e) => {
+            console.log(`I was clicked!`);
+            stopRecord.disabled = true;
+            record.disabled = false;
+            rec.stop();
+          }
+
+          navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(stream => {handlerFunction(stream)});
+        }
+
+        navigator.geolocation.getCurrentPosition(showLocation);
+
+        const sendData = (blob) => {
+          var xhr = new XMLHttpRequest();
+
+          xhr.open("POST", "/new-recording", true);
+          xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+          xhr.onload = function (oEvent) {
+            console.log(`File is uploaded!`);
+            window.open("/notified", "_self");
+          };
+
+          xhr.send(blob);
+        }
+
+        const handlerFunction = (stream) => {
+          rec = new MediaRecorder(stream);
+          rec.ondataavailable = (e) => {
+            audioChunks.push(e.data);
+            if (rec.state == "inactive") {
+              let blob = new Blob(audioChunks,  { type : 'audio/wav; codecs=0' });
+              const dataUrl = URL.createObjectURL(blob);
+              console.log(dataUrl); // There you can listen to your recording in a wav format
+              sendData(blob); //send to the server
+            }
           }
         }
-
-        let stopButton = document.getElementById('stop');
-        let downloadButton = document.getElementById('download');
-
-        stopButton.onclick = function(e) {
-          mediaRecorder.stop();
-        }
-
-        downloadButton.onclick = function download() {
-          var blob = new Blob(recordedChunks, {
-            type: 'audio/webm'
-          });
-          var url = URL.createObjectURL(blob);
-          var a = document.createElement('a');
-          document.body.appendChild(a);
-          a.style = 'display: none';
-          a.href = url;
-          a.download = 'test.webm';
-          a.click();
-          window.URL.revokeObjectURL(url);
-        }
-
-        navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(handleDataAvailable);
       </script>
 
 

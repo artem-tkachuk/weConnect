@@ -22,9 +22,17 @@
   },
   "homepage": "https://github.com/artem-tkachuk/weConnect#readme",
   "dependencies": {
+    "@google-cloud/language": "^3.8.0",
+    "@google-cloud/speech": "^3.6.0",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "ejs": "^3.0.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "ffmpeg": "0.0.4",
+    "mp3-to-wav": "^0.1.11",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "@google-cloud/storage": "^4.5.0"
   }
 }
