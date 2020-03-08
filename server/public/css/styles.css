@@ -143,7 +143,9 @@ section p {
   flex-basis: 30%;
 }
 .destinations{
-  padding-top:0;
+  padding-top:100px;
+margin-right: 80px;
+margin-left:80px;  
 }
 .lis{
   padding: 50px;
@@ -158,7 +160,7 @@ section p {
   margin: 25px 10px;
 }
 section:not(.hero):nth-child(even){
-  background-color: #f5f5f5;
+  background-color: #fffaf0;
 }
 ul{
   list-style-type: none;
@@ -263,6 +265,8 @@ footer{
 .contact{
   margin-top:80px;
   margin-bottom:80px;
+  padding-top:100px;
+padding-bottom:80px;
 }
 .testimonials{
   margin-top:10px;
