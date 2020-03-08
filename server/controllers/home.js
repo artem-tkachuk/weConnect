@@ -1,3 +1,3 @@
 exports.getHome = (req, res) => {
-    res.send(`Hello, world!`);
-}
+    res.render(`user/index`);
+};
