@@ -37,6 +37,84 @@
         </h3>
         <a href="#"><i class="fas fa-microphone fa-2x pulse-ring"></i></a>
       </div>
+
+
+
+
+      <button id="stop">Stop</button>
+      <button id="download">Download</button>
+
+      <script>
+        let recordedChunks = [];
+
+        let options = {mimeType: 'audio/webm'};
+        mediaRecorder = new MediaRecorder(stream, options);
+        mediaRecorder.ondataavailable = handleDataAvailable;
+        mediaRecorder.start();
+
+        function handleDataAvailable(event) {
+          if (event.data.size > 0) {
+            recordedChunks.push(event.data);
+          } else {
+            // ...
+          }
+        }
+
+        let stopButton = document.getElementById('stop');
+        let downloadButton = document.getElementById('download');
+
+        stopButton.onclick = function(e) {
+          mediaRecorder.stop();
+        }
+
+        downloadButton.onclick = function download() {
+          var blob = new Blob(recordedChunks, {
+            type: 'audio/webm'
+          });
+          var url = URL.createObjectURL(blob);
+          var a = document.createElement('a');
+          document.body.appendChild(a);
+          a.style = 'display: none';
+          a.href = url;
+          a.download = 'test.webm';
+          a.click();
+          window.URL.revokeObjectURL(url);
+        }
+
+        navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(handleDataAvailable);
+      </script>
+
+
+
+
+
+
+    </section>
+
+    <section class="destinations">
+      <h3 class="title">Some of our features</h3>
+      <p>
+        Find below some of our amazing features that can help you in case of an emergency.
+      </p>
+      <hr />
+      <ul class="grid">
+        <li
+                class="small"
+                style="background-image:url(images/hospital.jpg);"
+        ></li>
+        <li
+                class="large"
+                style="background-image:url(images/contact.jpg);"
+        ></li>
+        <li
+                class="large"
+                style="background-image:url(images/family.jpg);"
+        ></li>
+        <li
+                class="small"
+                style="background-image:url(images/mobile.jpg);"
+        ></li>
+      </ul>
     </section>
 
     <section class="try">
@@ -79,31 +157,7 @@
       </ul>
     </section>
     
-    <section class="destinations">
-      <h3 class="title">Some of our features</h3>
-      <p>
-        Find below some of our amazing features that can help you in case of an emergency.
-      </p>
-      <hr />
-      <ul class="grid">
-        <li
-          class="small"
-          style="background-image:url(image/hospital.jpg);"
-        ></li>
-        <li
-          class="large"
-          style="background-image:url(image/contact.jpg);"
-        ></li>
-        <li
-          class="large"
-          style="background-image:url(image/family.jpg);"
-        ></li>
-        <li
-          class="small"
-          style="background-image:url(image/mobile.jpg);"
-        ></li>
-      </ul>
-      </section>
+
         <section class="testimonials">
       <h3 class="title">Testimonials from our users!</h3>
       <hr />
