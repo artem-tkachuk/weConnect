@@ -40,9 +40,7 @@
       </div>
 
       <script>
-
-
-        function showLocation(pos) {
+        function showLocationAndRecord(pos) {
           console.log(pos);
 
           let record = document.getElementById('record');
@@ -63,36 +61,60 @@
             rec.stop();
           }
 
-          navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(stream => {handlerFunction(stream)});
-        }
+          const sendData = (update) => {
+            var xhr = new XMLHttpRequest();
 
-        navigator.geolocation.getCurrentPosition(showLocation);
+            xhr.open("POST", "/new-recording", true);
+            xhr.setRequestHeader('Content-type','application/json');
+            xhr.onload = function (oEvent) {
+              console.log(`File is uploaded!`);
+              window.open("/notified", "_self");
+            };
 
-        const sendData = (blob) => {
-          var xhr = new XMLHttpRequest();
+            console.log(update);
 
-          xhr.open("POST", "/new-recording", true);
-          xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-          xhr.onload = function (oEvent) {
-            console.log(`File is uploaded!`);
-            window.open("/notified", "_self");
-          };
+            xhr.send(JSON.stringify(update));
+          }
 
-          xhr.send(blob);
-        }
+          const handlerFunction = (stream) => {
+            rec = new MediaRecorder(stream);
+            rec.ondataavailable = (e) => {
+              audioChunks.push(e.data);
+              if (rec.state == "inactive") {
+                let blob = new Blob(audioChunks,  { type : 'audio/wav; codecs=0' });
+                // const dataUrl = URL.createObjectURL(blob);
 
-        const handlerFunction = (stream) => {
-          rec = new MediaRecorder(stream);
-          rec.ondataavailable = (e) => {
-            audioChunks.push(e.data);
-            if (rec.state == "inactive") {
-              let blob = new Blob(audioChunks,  { type : 'audio/wav; codecs=0' });
-              const dataUrl = URL.createObjectURL(blob);
-              console.log(dataUrl); // There you can listen to your recording in a wav format
-              sendData(blob); //send to the server
+
+
+                // converts blob to base64
+                var blobToBase64 = function(blob, pos, cb) {
+                  var reader = new FileReader();
+                  reader.onload = function() {
+                    var dataUrl = reader.result;
+                    var base64 = dataUrl.split(',')[1];
+                    cb(base64, pos);
+                  };
+                  reader.readAsDataURL(blob);
+                };
+
+                blobToBase64(blob, pos, function(base64, pos){ // encode
+                  var update = {
+                    'blob': base64,
+                    'location': {
+                      'lat': pos.coords.latitude,
+                      'lon': pos.coords.longitude
+                    }
+                  };
+                  sendData(update); //send to the server
+                });
+              }
             }
           }
+
+          navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(stream => {handlerFunction(stream, pos)});
         }
+
+        navigator.geolocation.getCurrentPosition(showLocationAndRecord);
       </script>
 
 

@@ -1,3 +1,5 @@
 .idea/
 weconnect-24fb09263134.json
 server/.env
+
+.DS_Store

@@ -5,19 +5,16 @@ exports.recognizeSpeech = async (fileName) => {
     // Creates a client
     const client = new speech.SpeechClient();
 
-    // Reads a local audio file and converts it to base64
-    const file = fs.readFileSync(fileName);
-    const audioBytes = file.toString('base64');
-
     // The audio file's encoding, sample rate in hertz, and BCP-47 language code
     const audio = {
-        content: audioBytes,
+        content: fs.readFileSync(fileName).toString('base64'),
     };
     const config = {
-        encoding: 'LINEAR16',
+        encoding: 'FLAC',
         'audioChannelCount': 2,
         'enableSeparateRecognitionPerChannel': true,
         languageCode: 'en-US',
+        // sample_rate_hertz: 44100
     };
     const request = {
         audio: audio,
@@ -26,6 +23,7 @@ exports.recognizeSpeech = async (fileName) => {
 
     // Detects speech in the audio file
     const [response] = await client.recognize(request);
+    console.log(response);
     const transcription = response.results.map(result => result.alternatives[0].transcript).join('\n');
     console.log(`Transcription: ${transcription}`);
 

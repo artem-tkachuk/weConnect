@@ -14,8 +14,8 @@ app.set('views', 'views');
 
 app.use(express.static('public'));
 
-let upperBound = '100mb';
-app.use(bodyParser.urlencoded({extended: false, limit: upperBound}));
+//let upperBound = '100mb';
+//app.use(bodyParser.urlencoded({extended: false, limit: upperBound}));
 app.use(bodyParser.json());
 
 app.use(getIndexRoutes);

@@ -29,6 +29,8 @@
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "ffmpeg": "0.0.4",
+    "firebase-admin": "^8.9.2",
+    "fluent-ffmpeg": "^2.1.2",
     "mp3-to-wav": "^0.1.11",
     "node-fetch": "^2.6.0"
   },
