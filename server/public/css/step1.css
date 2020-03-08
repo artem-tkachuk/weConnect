@@ -1,0 +1,87 @@
+.sak1{
+	margin-top: 50px;
+}
+.sak2{
+	margin-bottom: 10px;
+}
+h1 {
+  font:bold 30px "Quicksand", sans-serif;
+  margin-bottom: 25px;
+  color: black;
+  text-align: center;
+  margin-top:10px;
+}
+h6{
+  color:grey;
+}
+body {
+	background: #F5F5DC;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: 'Montserrat', sans-serif;
+	height: 100vh;
+	margin: -20px 0 50px;
+
+}
+.radios{
+  border: 2px solid white;
+	padding-right: 20px;
+	margin-right: 20px;
+  background-color: gainsboro;
+	}
+  .co{
+	color: black;
+}
+button {
+	border-radius: 20px;
+	border: 1px solid black;
+	background-color: black;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+button:active {
+	transform: scale(0.95);
+}
+
+button:focus {
+	outline: none;
+}
+
+button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+.input-field {
+            width: 100%;
+            padding: 10px;
+						text-align: center;
+						margin-left: 450px;
+            border: white;
+        }
+				.input-icons {
+					 width: 100%;
+					 margin-bottom: 10px;
+           margin-left:10px;
+			 }
+.cot{
+  color:grey;
+}
+@media (max-width: 800px){
+  body{
+    padding: 50px 20px;
+  }
+.input-field{
+width:50%;
+margin:auto;
+max-width: 250px;
+overflow-x:hidden;
+}
+}
