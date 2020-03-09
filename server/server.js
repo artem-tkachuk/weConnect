@@ -6,7 +6,8 @@ const bodyParser = require('body-parser');
 const port = process.env.PORT;
 const app = express();
 
-const getIndexRoutes = require('./routes');
+const getIndexRoutes = require('./routes/index');
+const getAdminRoutes = require('./routes/admin');
 const get404 = require('./controllers/404').get404;
 
 app.set('view engine', 'ejs');
@@ -19,6 +20,7 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 app.use(getIndexRoutes);
+app.use(getAdminRoutes);
 app.use(get404);
 
 app.listen(port, () => {

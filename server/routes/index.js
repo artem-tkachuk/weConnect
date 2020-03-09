@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { getindex, postNewRecording, getNotified } = require('../controllers');
+const { getindex, postNewRecording, getNotified } = require('../controllers/index');
 
 router.get('/', getindex);
 router.post('/new-recording', postNewRecording);

@@ -43,7 +43,7 @@ exports.postNewRecording = async (req, res) => {
                             ...sentimentsEntities, transcription, location
                         };
 
-                        db.collection('recordings').add(data).then(document => {
+                        db.collection('companies').doc('s0TbW6iNowR51CoGAIy4').collection('tasks').add(data).then(document => {
                             //TODO based on keywords reveal what the situation is => TODO report to the needed agencies
                             console.log(document);
                             res.sendStatus(200);

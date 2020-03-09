@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+  </head>
+  <style>
+    /* Set the size of the div element that contains the map */
+    #map {
+      height: 400px;  /* The height is 400 pixels */
+      width: 100%;  /* The width is the width of the web page */
+    }
+  </style>
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand"
+    rel="stylesheet"
+  />
+  <link
+    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    rel="stylesheet"
+  />
+  <body>
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap" rel="stylesheet">
+      <div class="task-manager">
+  <div class="left-bar">
+    <div class="left-content">
+      <ul class="action-list">
+        <li class="item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-inbox"
+            viewBox="0 0 24 24">
+            <path d="M22 12h-6l-2 3h-4l-2-3H2" />
+            <path
+              d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" />
+          </svg>
+          <span>Inbox</span>
+        </li>
+        <li class="item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="feather feather-star">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+          <span> Today</span>
+        </li>
+        <li class="item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-calendar"
+            viewBox="0 0 24 24">
+            <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+            <path d="M16 2v4M8 2v4m-5 4h18" />
+          </svg>
+          <span>Important</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="page-content">
+    <div class="header" style="font-size: 20px;">weConnect Dashboard</div>
+    <div class="content-categories">
+      <div class="label-wrapper">
+        <input class="nav-item" name="nav" type="radio" id="opt-1">
+        <label class="category" for="opt-1">All</label>
+        <h3>My Google Maps Demo</h3>
+        <!--The div element for the map -->
+        <div id="map"></div>
+      </div>
+      <div class="label-wrapper">
+        <input class="nav-item" name="nav" type="radio" id="opt-2" checked>
+        <label class="category" for="opt-2">Important</label>
+      </div>
+      </div>
+    <div id="tasks-wrapper" style="overflow:scroll;">
+<!--      <div class="task">-->
+<!--        <input class="task-item" name="task" type="checkbox" id="item-1" checked>-->
+<!--        <label for="item-1">-->
+<!--          <span class="label-text">User 1</span>-->
+<!--        </label>-->
+<!--        <span class="tag approved">Approved</span>-->
+<!--      </div>-->
+<!--        <div class="about_details">-->
+<!--        <ul>-->
+<!--          <li>-->
+<!--            <h3>Location:  </h3>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <h3>Gender:  </h3>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <h3>Age:  </h3>-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--      <div class="task">-->
+<!--        <input class="task-item" name="task" type="checkbox" id="item-2" checked>-->
+<!--        <label for="item-2">-->
+<!--          <span class="label-text">User 2</span>-->
+<!--        </label>-->
+<!--        <span class="tag progress">In Progress</span>-->
+<!--      </div>-->
+<!--      <div class="about_details">-->
+<!--      <ul>-->
+<!--        <li>-->
+<!--          <h3>Location:  </h3>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <h3>Gender:  </h3>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <h3>Age:  </h3>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--      <div class="task">-->
+<!--        <input class="task-item" name="task" type="checkbox" id="item-3">-->
+<!--        <label for="item-3">-->
+<!--          <span class="label-text">User 3</span>-->
+<!--        </label>-->
+<!--        <span class="tag review">In Review</span>-->
+<!--      </div>-->
+<!--      <div class="about_details">-->
+<!--      <ul>-->
+<!--        <li>-->
+<!--          <h3>Location:  </h3>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <h3>Gender:  </h3>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <h3>Age:  </h3>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--      <div class="task">-->
+<!--        <input class="task-item" name="task" type="checkbox" id="item-4">-->
+<!--        <label for="item-4">-->
+<!--          <span class="label-text">User 4</span>-->
+<!--        </label>-->
+<!--        <span class="tag progress">In Progress</span>-->
+<!--      </div>-->
+<!--      <div class="about_details">-->
+<!--      <ul>-->
+<!--        <li>-->
+<!--          <h3>Location:  </h3>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <h3>Gender:  </h3>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <h3>Age:  </h3>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--      <div class="task">-->
+<!--        <input class="task-item" name="task" type="checkbox" id="item-5">-->
+<!--        <label for="item-5">-->
+<!--          <span class="label-text">User 5</span>-->
+<!--        </label>-->
+<!--        <span class="tag approved">Approved</span>-->
+<!--      </div>-->
+<!--      <div class="about_details">-->
+<!--      <ul>-->
+<!--        <li>-->
+<!--          <h3>Location:  </h3>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <h3>Gender:  </h3>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <h3>Age:  </h3>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--      <div class="task">-->
+<!--        <input class="task-item" name="task" type="checkbox" id="item-6">-->
+<!--        <label for="item-6">-->
+<!--          <span class="label-text">User 6</span>-->
+<!--        </label>-->
+<!--        <span class="tag review">In Review</span>-->
+<!--      </div>-->
+<!--      <div class="about_details">-->
+<!--      <ul>-->
+<!--        <li>-->
+<!--          <h3>Location:  </h3>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <h3>Gender:  </h3>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <h3>Age:  </h3>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </div>-->
+        </div>
+  </div>
+  <div class="right-bar">
+    <div class="top-part">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="feather feather-users">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+      <div id="count">6</div>
+    </div>
+    <div class="right-content">
+      <div class="task-box blue">
+        <div class="description-task">
+          <div class="time">10:00 - 11:00 AM</div>
+          <div class="task-name">Urgent Case</div>
+        </div>
+        <div class="more-button"></div>
+        <div class="members">
+        </div>
+      </div>
+      <div class="task-box red">
+        <div class="description-task">
+          <div class="time">01:00 - 02:00 PM</div>
+          <div class="task-name">Injury Visit</div>
+        </div>
+        <div class="more-button"></div>
+        <div class="members">
+                </div>
+      </div>
+      </div>
+  </div>
+</div>
+
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-auth.js"></script>
+
+  <script>
+    var tasks = [];
+    // const firebase = require("firebase");
+    // // Required for side-effects
+    // require("firebase/firestore");
+
+    // Initialize Cloud Firestore through Firebase
+    var firebaseConfig = {
+      apiKey: "AIzaSyDsNuVkfLtS5hKe6ChjWFYnTCDNlc4QbEM",
+      authDomain: "weconnect-270421.firebaseapp.com",
+      databaseURL: "https://weconnect-270421.firebaseio.com",
+      projectId: "weconnect-270421",
+      storageBucket: "weconnect-270421.appspot.com",
+      messagingSenderId: "51644822370",
+      appId: "1:51644822370:web:81ba1dd21ce691f173723b",
+      measurementId: "G-WDKZXT34CT"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+
+
+    var db = firebase.firestore();
+
+    db.collection("companies").doc('s0TbW6iNowR51CoGAIy4').collection('tasks').onSnapshot(snapshot => { //TODO get the id from store or email
+
+      console.log('Here!');
+      snapshot.forEach(function(doc) {
+
+        tasks.push({
+          ...doc.data(), id: doc.id
+        });
+      });
+
+      console.log(tasks);
+
+      document.getElementById('count').innerText = tasks.length.toString();
+
+      tasks.forEach(task => {
+        const location = task.location;
+
+
+
+        var taskElem = document.createElement("DIV");
+        taskElem.setAttribute('class', 'task');
+        taskElem.innerHTML = "<input class=\"task-item\" name=\"task\" type=\"checkbox\" id=\"item-2\" checked>\n                    <label for=\"item-2\">\n                    <span class=\"label-text\">" + task.id + "</span>\n            </label>\n            <span class=\"tag progress\">In Progress</span>\n";                   // Insert text
+        document.getElementById(`tasks-wrapper`).appendChild(taskElem);
+
+        var about_details = document.createElement("DIV");   // Create a <button> element
+        about_details.setAttribute('class', 'about_details');
+        about_details.innerHTML = "\n" +
+                "      <ul>\n" +
+                "        <li>\n" +
+                "          <h3>Location: " + location.lat + ", " + location.lon + " </h3>\n" +
+                "        </li>\n" +
+                "        <li>\n" +
+                "          <h3>Gender:  </h3>\n" +
+                "        </li>\n" +
+                "        <li>\n" +
+                "          <h3>Age:  </h3>\n" +
+                "        </li>\n" +
+                "      </ul>\n" +
+                "    </div>";                   // Insert text
+        document.getElementById(`tasks-wrapper`).appendChild(about_details);
+      })
+
+      //TODO update the interface. Increase counter by 1 and
+      //TODO add additional templates for new cards
+    })
+
+    // Initialize and add the map
+    async function initMap() {
+
+      var myLatLng = {lat: -25.363, lng: 131.044};
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: myLatLng
+      });
+
+
+      tasks.forEach(task => {
+        console.log(`creating a marker!`);
+        var marker = new google.maps.Marker({
+          position: {
+            "lat": task.location.lat,
+            "lng": task.location.lon},
+          map: map,
+          title: task.transcription.toString()
+        });
+
+        marker.setMap(map);
+
+      })
+    }
+  </script>
+
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsNuVkfLtS5hKe6ChjWFYnTCDNlc4QbEM&callback=initMap">
+    </script>
+
+  </body>
+</html>

@@ -1,6 +1,11 @@
 const speech = require('@google-cloud/speech');
 const fs = require('fs');
 
+const {Storage} = require('@google-cloud/storage');
+
+const storage = new Storage();
+const bucketName = 'weconnect-recordings';
+
 exports.recognizeSpeech = async (fileName) => {
     // Creates a client
     const client = new speech.SpeechClient();
